@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="color_violet_electric">#6200EE</color>
+    <color name="color_purple">#3700B3</color>
+    <color name="color_blue_robin_egg">#03DAC5</color>
+    <color name="color_green_malachite">#16b13a</color>
 </resources>
