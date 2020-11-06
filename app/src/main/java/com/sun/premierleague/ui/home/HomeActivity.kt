@@ -1,5 +1,7 @@
 package com.sun.premierleague.ui.home
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.sun.premierleague.R
 import com.sun.premierleague.base.BaseActivity
@@ -15,5 +17,9 @@ class HomeActivity : BaseActivity(), HomeContact.View {
 
     override fun initPresenter() {
         presenter = HomePresenter(this)
+    }
+
+    companion object {
+        fun getIntent(context: Context) = Intent(context, HomeActivity::class.java)
     }
 }
