@@ -1,6 +1,7 @@
-package com.sun.premierleague.data
+package com.sun.premierleague.data.source.local
 
 import android.os.AsyncTask
+import com.sun.premierleague.data.source.remote.OnDataLoadedCallback
 
 class LocalAsyncTask<P, T>(
     private val callback: OnDataLoadedCallback<T>,

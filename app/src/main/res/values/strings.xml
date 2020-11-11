@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Premier League</string>
+    <string name="err_fist_param_not_be_null">First param should not be null, or you forgot passing one</string>
 </resources>
