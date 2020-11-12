@@ -1,9 +1,9 @@
 ## Related Tickets
-
+- [#Task xxxxx: Content]({https://edu-redmine.sun-asterisk.vn/issues/xxxx})
 ## WHAT
-
+- 
 ## HOW
-
+- 
 ## WHY
 
 ## Evidence (Screenshot or Video)
