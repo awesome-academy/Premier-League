@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Premier League</string>
     <string name="err_fist_param_not_be_null">First param should not be null, or you forgot passing one</string>
+    <string name="title_matches">MATCHES</string>
+    <string name="title_match">Match</string>
+    <string name="title_stat">Stat</string>
+    <string name="title_setting">Setting</string>
 </resources>
