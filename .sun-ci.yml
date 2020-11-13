@@ -1,38 +1,48 @@
 workspace: true
 
 stages:
-  - build
+  - Lint 
 
 jobs:
-  - name: Build
-    stage: build
-    image: androidsdk/android-29:latest
-    environment:
-      JVM_OPTS: -Xmx3200m
-        # This is Android review pull request box (Not necessary to change)
-        #ROOM_ID: "123456789"
-        # Insert the chatwork accounts which you want to mention when the pull request was verified
-        #MEMBERS: "[To:1234567] Tran Quang Huy"
-    cache:
-      - key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-        paths:
-          - .gradle
-    before_script:
-      - echo "Start job"
-      - chmod +x ./gradlew
-    script:
-      - ./gradlew androidDependencies
-      - ./gradlew lint test
-    artifacts:
+- name: Check Lint
+  stage: Lint
+  image: androidsdk/android-29:latest
+  environment:
+    ROOM_ID: "96370317"
+      # Insert the chatwork accounts which you want to mention when the pull request was verified
+    MEMBERS: "[To:5114178] Tong Dinh Hoan [To:5114181] Nguyen Khac Tung"
+  cache:
+  - key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+    paths:
+      - ./gradle
+  before_script:
+  - echo "Check Lint and Test"
+  - chmod +x ./gradlew
+  - echo "failed (pray)(sweat);(" > .msg_status
+  - echo "(devil)" > .msg_icon
+  script:
+  - ./gradlew lint test
+  - echo "successful (F)(F)(F)" > .msg_status
+  - echo "(handshake)" > .msg_icon
+  artifacts:
       paths:
         - app/build/reports
         - app/build/test-results
       expires_in: 3 days
-    after_script:
-      - echo "Finish job"
-    only:
-      branches:
-        - develop
-        - main
-      events:
-        - pull_request
+  after_script:
+  - echo "Build successfully"
+  - echo "Test successfully"
+  - "curl -X POST -H \"X-ChatWorkToken: $CHATWORK_API_KEY\" -d \
+                \"body= $MEMBERS [info][title]Repository : $CI_REPOSITORY $(cat .msg_icon)[/title]Your pull request is $(cat .msg_status) \n
+              -> Click here for more detail: https://ci.sun-asterisk.com/$CI_GIT_PROVIDER/$CI_REPOSITORY/builds/$CI_BUILD_NUMBER/ \n
+              - Author: $CI_COMMIT_AUTHOR \n
+              - Branch: $CI_BRANCH \n
+              - Pull requests: https://$CI_GIT_PROVIDER.com/$CI_REPOSITORY/pulls[/info]
+                \"\
+                \"https://api.chatwork.com/v2/rooms/$ROOM_ID/messages\""
+  only:
+    branches:
+    - develop
+    - main
+    events:
+    - pull_request
