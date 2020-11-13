@@ -4,26 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment : Fragment(), BaseView {
+abstract class BaseFragment : Fragment() {
 
-    protected abstract fun configView(): Int
-
-    protected abstract fun initPresenter()
+    @get: LayoutRes
+    protected abstract val layoutResource: Int
 
     protected abstract fun initData()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initPresenter()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(configView(), container, false)
+    ): View? = inflater.inflate(layoutResource, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
