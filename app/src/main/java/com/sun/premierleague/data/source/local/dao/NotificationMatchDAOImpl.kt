@@ -1,88 +1,48 @@
 package com.sun.premierleague.data.source.local.dao
 
-import com.sun.premierleague.data.model.NotificationMatch
-import com.sun.premierleague.data.source.local.database.NotificationMatchDatabase
+import com.sun.premierleague.data.model.MatchNotification
+import com.sun.premierleague.data.source.local.database.AppDatabase
 
-class NotificationMatchDAOImpl(notificationMatchDatabase: NotificationMatchDatabase) :
+class NotificationMatchDAOImpl private constructor(appDatabase: AppDatabase) :
     NotificationMatchDAO {
 
-    private val writableDatabase = notificationMatchDatabase.writableDatabase
-    private val readableDatabase = notificationMatchDatabase.readableDatabase
+    private val writableDatabase = appDatabase.writableDatabase
+    private val readableDatabase = appDatabase.readableDatabase
 
-    override fun getFootballNotifications(): List<NotificationMatch> {
-        val listNotificationMatches = mutableListOf<NotificationMatch>()
+    override fun getFootballNotifications(): List<MatchNotification> {
+        val listNotificationMatches = mutableListOf<MatchNotification>()
         val mCursor =
-            readableDatabase.query(NotificationMatch.TABLE_NAME, null, null, null, null, null, null)
+            readableDatabase.query(MatchNotification.TABLE_NAME, null, null, null, null, null, null)
         mCursor.moveToFirst()
         while (!mCursor.isAfterLast) {
-            val matchID = mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_ID))
-            val matchDate = mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_DATE))
-            val matchTime = mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_TIME))
-            val matchHomeID =
-                mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_HOME_TEAM_ID))
-            val matchHomeName =
-                mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_HOME_TEAM_NAME))
-            val matchAwayID =
-                mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_AWAY_TEAM_ID))
-            val matchAwayName =
-                mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_AWAY_TEAM_NAME))
-            listNotificationMatches.add(
-                NotificationMatch(
-                    matchID,
-                    matchDate,
-                    matchTime,
-                    matchHomeID,
-                    matchHomeName,
-                    matchAwayID,
-                    matchAwayName
-                )
-            )
+            listNotificationMatches.add(MatchNotification(mCursor))
             mCursor.moveToNext()
         }
         mCursor.close()
         return listNotificationMatches
     }
 
-    override fun getItemFootballNotification(idMatch: String): NotificationMatch {
+    override fun getItemFootballNotification(idMatch: String): MatchNotification {
         val mCursor = readableDatabase.query(
-            false, NotificationMatch.TABLE_NAME, null, NotificationMatch.MATCH_ID + "= ?",
+            false, MatchNotification.TABLE_NAME, null, MatchNotification.MATCH_ID + "= ?",
             arrayOf(idMatch), null, null, null, null
         )
-        val matchID = mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_ID))
-        val matchDate = mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_DATE))
-        val matchTime = mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_TIME))
-        val matchHomeID =
-            mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_HOME_TEAM_ID))
-        val matchHomeName =
-            mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_HOME_TEAM_NAME))
-        val matchAwayID =
-            mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_AWAY_TEAM_ID))
-        val matchAwayName =
-            mCursor.getString(mCursor.getColumnIndex(NotificationMatch.MATCH_AWAY_TEAM_NAME))
-        return NotificationMatch(
-            matchID,
-            matchDate,
-            matchTime,
-            matchHomeID,
-            matchHomeName,
-            matchAwayID,
-            matchAwayName
-        )
+        return MatchNotification(mCursor)
     }
 
-    override fun addFootballNotification(notificationMatch: NotificationMatch): Boolean {
+    override fun addFootballNotification(matchNotification: MatchNotification): Boolean {
         val result = writableDatabase.insert(
-            NotificationMatch.TABLE_NAME,
+            MatchNotification.TABLE_NAME,
             null,
-            notificationMatch.getContentValues()
+            matchNotification.getContentValues()
         )
         return result > 0
     }
 
     override fun deleteFootballNotification(idMatch: String): Boolean {
         return writableDatabase.delete(
-            NotificationMatch.TABLE_NAME,
-            NotificationMatch.MATCH_ID + "= ?",
+            MatchNotification.TABLE_NAME,
+            MatchNotification.MATCH_ID + "= ?",
             arrayOf(idMatch)
         ) > 0
     }
@@ -90,10 +50,10 @@ class NotificationMatchDAOImpl(notificationMatchDatabase: NotificationMatchDatab
     companion object {
         private var instance: NotificationMatchDAOImpl? = null
 
-        fun getInstance(notificationMatchDatabase: NotificationMatchDatabase):
+        fun getInstance(appDatabase: AppDatabase):
                 NotificationMatchDAOImpl =
             instance ?: synchronized(this) {
-                instance ?: NotificationMatchDAOImpl(notificationMatchDatabase).also {
+                instance ?: NotificationMatchDAOImpl(appDatabase).also {
                     instance = it
                 }
             }

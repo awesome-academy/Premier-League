@@ -1,10 +1,10 @@
 package com.sun.premierleague.data.source.local.dao
 
-import com.sun.premierleague.data.model.NotificationMatch
+import com.sun.premierleague.data.model.MatchNotification
 
 interface NotificationMatchDAO {
-    fun getFootballNotifications(): List<NotificationMatch>
-    fun getItemFootballNotification(idMatch: String): NotificationMatch
-    fun addFootballNotification(notificationMatch: NotificationMatch): Boolean
+    fun getFootballNotifications(): List<MatchNotification>
+    fun getItemFootballNotification(idMatch: String): MatchNotification
+    fun addFootballNotification(matchNotification: MatchNotification): Boolean
     fun deleteFootballNotification(idMatch: String): Boolean
 }
