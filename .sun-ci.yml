@@ -30,17 +30,15 @@ jobs:
         - app/build/test-results
       expires_in: 3 days
   after_script:
-  - echo "Build successfully"
-  - echo "Test successfully"
+  - echo "$CI_COMMIT_REF" | sed 's/refs//' > .pull_link
   - "curl -X POST -H \"X-ChatWorkToken: $CHATWORK_API_KEY\" -d \
                 \"body= $MEMBERS [info][title]Repository : $CI_REPOSITORY $(cat .msg_icon)[/title]Your pull request is $(cat .msg_status) \n
-              -> Click here for more detail: https://ci.sun-asterisk.com/$CI_GIT_PROVIDER/$CI_REPOSITORY/builds/$CI_BUILD_NUMBER/ \n
+              -> Click here for more detail: https://ci.sun-asterisk.com/$CI_GIT_PROVIDER/$CI_REPOSITORY/builds/$CI_BUILD_NUMBER \n
               - Author: $CI_COMMIT_AUTHOR \n
-              - Branch: $CI_BRANCH \n
-              - Pull requests: https://$CI_GIT_PROVIDER.com/$CI_REPOSITORY/pulls[/info]
+              - Pull request: https://$CI_GIT_PROVIDER.com/$CI_REPOSITORY$(cat .pull_link) [/info]
                 \"\
                 \"https://api.chatwork.com/v2/rooms/$ROOM_ID/messages\""
-  only:
+   only:
     branches:
     - develop
     - main
