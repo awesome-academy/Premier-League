@@ -5,4 +5,8 @@
     <string name="title_match">Match</string>
     <string name="title_stat">Stat</string>
     <string name="title_setting">Setting</string>
+    <string name="title_main_lineup">Main LineUp</string>
+    <string name="title_reserve">Reserve</string>
+    <string name="title_coach">Coach</string>
+    <string name="title_player_absent">Player Absent</string>
 </resources>
