@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.detail.DetailMatchActivity"
+            android:theme="@style/DetailMatchTheme" />
+        <activity
             android:name=".ui.splash.SplashActivity"
             android:label="@string/title_matches"
             android:theme="@style/SplashTheme">
