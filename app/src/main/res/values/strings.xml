@@ -9,4 +9,10 @@
     <string name="title_reserve">Reserve</string>
     <string name="title_coach">Coach</string>
     <string name="title_player_absent">Player Absent</string>
+    <string name="title_event">Event</string>
+    <string name="label_goal">Goal</string>
+    <string name="label_assist">Assist</string>
+    <string name="label_penalty">Penalty</string>
+    <string name="label_free_kick">Free Kick</string>
+    <string name="label_own_goal">Own Goal</string>
 </resources>
