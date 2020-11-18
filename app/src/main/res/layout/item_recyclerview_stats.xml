@@ -22,22 +22,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textTitleTeam"
+        android:id="@+id/textStt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_5"
+        android:layout_height="0dp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/viewTitle"
+        app:layout_constraintEnd_toStartOf="@+id/imageTeam"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewTitle" />
 
     <ImageView
         android:id="@+id/imageTeam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_16"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:layout_marginStart="@dimen/dp_24"
         android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="@+id/viewTitle"
-        app:layout_constraintStart_toEndOf="@+id/textTitleTeam"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewTitle" />
 
     <TextView
@@ -65,12 +66,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/viewTitle"
-        app:layout_constraintEnd_toStartOf="@+id/textTitleTie"
+        app:layout_constraintEnd_toStartOf="@+id/textTitleDraw"
         app:layout_constraintStart_toEndOf="@+id/textTitleNumberMatch"
         app:layout_constraintTop_toTopOf="@+id/viewTitle" />
 
     <TextView
-        android:id="@+id/textTitleTie"
+        android:id="@+id/textTitleDraw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/viewTitle"
@@ -84,7 +85,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/viewTitle"
         app:layout_constraintEnd_toStartOf="@+id/textTitleGoalDiff"
-        app:layout_constraintStart_toEndOf="@+id/textTitleTie"
+        app:layout_constraintStart_toEndOf="@+id/textTitleDraw"
         app:layout_constraintTop_toTopOf="@+id/viewTitle" />
 
     <TextView

@@ -1,9 +1,12 @@
 package com.sun.premierleague.data.model
 
+import android.os.Parcelable
 import com.sun.premierleague.utils.MatchConst.INFO
 import com.sun.premierleague.utils.MatchConst.TIME
+import kotlinx.android.parcel.Parcelize
 import org.json.JSONObject
 
+@Parcelize
 data class Goalscorer(
     val time: String,
     val homeScorer: String,
@@ -16,7 +19,7 @@ data class Goalscorer(
     val awayAssist: String,
     val awayAssistId: String,
     val info: String
-) {
+) : Parcelable {
     constructor(jsonObject: JSONObject) : this(
         jsonObject.getString(TIME),
         jsonObject.getString(HOME_SCORE),

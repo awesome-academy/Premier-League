@@ -19,11 +19,12 @@
     <string name="title_search_matches">Search Matches</string>
     <string name="title_team">Team</string>
     <string name="title_season">Season 2020/2021</string>
-    <string name="title_number_match">S.T</string>
-    <string name="title_win">T.</string>
-    <string name="title_tie">H.</string>
-    <string name="title_lose">B.</string>
-    <string name="title_goal_difference">+/-</string>
-    <string name="title_point">Đ.</string>
+    <string name="title_number_match">PI</string>
+    <string name="title_win">W</string>
+    <string name="title_tie">D</string>
+    <string name="title_lose">L</string>
+    <string name="title_goal_difference">GD</string>
+    <string name="title_point">Pts</string>
+    <string name="goal_difference">%s/%s</string>
     <string name="title_select_date">Select Date</string>
 </resources>
