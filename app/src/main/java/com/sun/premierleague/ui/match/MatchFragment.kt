@@ -1,9 +1,13 @@
 package com.sun.premierleague.ui.match
 
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import com.sun.premierleague.R
 import com.sun.premierleague.base.BaseFragment
 import com.sun.premierleague.data.model.MatchItem
 import com.sun.premierleague.utils.RepositoryUtil
+import com.sun.premierleague.utils.TimeUtils
 import com.sun.premierleague.utils.showToast
 import kotlinx.android.synthetic.main.fragment_match.*
 
@@ -15,7 +19,13 @@ class MatchFragment : BaseFragment(), MatchContract.View {
     override val layoutResource: Int
         get() = R.layout.fragment_match
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_action_bar, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
     override fun initData() {
+        setHasOptionsMenu(true)
         initAdapter()
         initPresenter()
         presenter?.start()
@@ -29,6 +39,17 @@ class MatchFragment : BaseFragment(), MatchContract.View {
         val context = context ?: return
         val repository = RepositoryUtil.getRepository(context)
         presenter = MatchPresenter(this, repository)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        context?.let {
+            TimeUtils.getDatePickerDialog(it) { time ->
+                presenter?.getMatchInformation(
+                    time
+                )
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun showMatch(matches: List<MatchItem>) {
