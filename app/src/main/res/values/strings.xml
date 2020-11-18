@@ -16,4 +16,12 @@
     <string name="label_penalty">Penalty</string>
     <string name="label_free_kick">Free Kick</string>
     <string name="label_own_goal">Own Goal</string>
+    <string name="title_team">Team</string>
+    <string name="title_season">Season 2020/2021</string>
+    <string name="title_number_match">S.T</string>
+    <string name="title_win">T.</string>
+    <string name="title_tie">H.</string>
+    <string name="title_lose">B.</string>
+    <string name="title_goal_difference">+/-</string>
+    <string name="title_point">Đ.</string>
 </resources>
