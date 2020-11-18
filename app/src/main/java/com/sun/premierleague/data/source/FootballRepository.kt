@@ -34,8 +34,7 @@ class FootballRepository private constructor(
     companion object {
         private var instance: FootballRepository? = null
 
-        fun getInstance(local: FootballDataSource.Local, remote: FootballDataSource.Remote) {
+        fun getInstance(local: FootballDataSource.Local, remote: FootballDataSource.Remote) =
             instance ?: FootballRepository(local, remote).also { instance = it }
-        }
     }
 }
