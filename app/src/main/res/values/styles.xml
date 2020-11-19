@@ -7,8 +7,12 @@
         <item name="colorAccent">@color/color_green_malachite</item>
     </style>
 
-    <style name="CustomTheme" parent="Theme.AppCompat.Light">
+    <style name="TeamTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_mid_night</item>
+        <item name="colorPrimaryDark">@color/color_mid_night</item>
+    </style>
 
+    <style name="CustomTheme" parent="Theme.AppCompat.Light">
         <item name="contentInsetStart">0dp</item>
         <item name="contentInsetEnd">0dp</item>
     </style>

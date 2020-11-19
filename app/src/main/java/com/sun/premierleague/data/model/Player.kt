@@ -11,8 +11,8 @@ data class Player(
     val playerAge: String,
     val playerMatchPlayed: String,
     val playerGoals: String,
-    val playerRedCards: String,
-    val playerYellowCards: String
+    val playerYellowCards: String,
+    val playerRedCards: String
 ) {
     constructor(jsonObject: JSONObject) : this(
         jsonObject.getLong(PLAYER_KEY),
@@ -23,9 +23,14 @@ data class Player(
         jsonObject.getString(PLAYER_AGE),
         jsonObject.getString(PLAYER_MATCH_PLAYED),
         jsonObject.getString(PLAYER_GOALS),
-        jsonObject.getString(PLAYER_RED_CARD),
-        jsonObject.getString(PLAYER_YELLOW_CARD)
+        jsonObject.getString(PLAYER_YELLOW_CARD),
+        jsonObject.getString(PLAYER_RED_CARD)
     )
+
+    fun isDefender(): Boolean = this.playerType == DEFENDERS
+    fun isGoalkeeper(): Boolean = this.playerType == GOALKEEPERS
+    fun isMidfielder(): Boolean = this.playerType == MIDFIELDERS
+    fun isForwarder(): Boolean = this.playerType == FORWARDS
 
     companion object {
         const val PLAYER_AGE = "player_age"
@@ -35,8 +40,12 @@ data class Player(
         const val PLAYER_KEY = "player_key"
         const val PLAYER_MATCH_PLAYED = "player_match_played"
         const val PLAYER_NAME = "player_name"
-        const val PLAYER_RED_CARD = "player_red_card"
+        const val PLAYER_RED_CARD = "player_red_cards"
         const val PLAYER_TYPE = "player_type"
-        const val PLAYER_YELLOW_CARD = "player_yellow_card"
+        const val PLAYER_YELLOW_CARD = "player_yellow_cards"
+        private const val DEFENDERS = "Defenders"
+        private const val GOALKEEPERS = "Goalkeepers"
+        private const val MIDFIELDERS = "Midfielders"
+        private const val FORWARDS = "Forwards"
     }
 }

@@ -3,6 +3,7 @@ package com.sun.premierleague.ui.stats
 import com.sun.premierleague.R
 import com.sun.premierleague.base.BaseFragment
 import com.sun.premierleague.data.model.StatItem
+import com.sun.premierleague.ui.detail.DetailMatchActivity
 import com.sun.premierleague.utils.RepositoryFactory
 import com.sun.premierleague.utils.showToast
 import kotlinx.android.synthetic.main.fragment_stats.*
@@ -23,7 +24,13 @@ class StatsFragment : BaseFragment(), StatsContact.View {
 
     private fun initAdapter() {
         recyclerStats.setHasFixedSize(true)
-        recyclerStats.adapter = adapter
+        recyclerStats.adapter = adapter.apply {
+            onItemClick = { item ->
+                context?.let {
+                    startActivity(DetailMatchActivity.getIntent(it, item.teamId))
+                }
+            }
+        }
     }
 
     private fun initPresenter() {
