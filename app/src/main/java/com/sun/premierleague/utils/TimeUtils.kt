@@ -1,5 +1,8 @@
 package com.sun.premierleague.utils
 
+import android.app.DatePickerDialog
+import android.content.Context
+import com.sun.premierleague.R
 import com.sun.premierleague.base.BaseView
 import com.sun.premierleague.data.model.Time
 import java.lang.Exception
@@ -35,5 +38,25 @@ object TimeUtils : BaseView {
             showMessage(e.toString())
         }
         return null
+    }
+
+    fun getDatePickerDialog(context: Context, getData: (Time) -> Unit) {
+        val currentDate = Calendar.getInstance()
+        val year = currentDate.get(Calendar.YEAR)
+        val month = currentDate.get(Calendar.MONTH)
+        val day = currentDate.get(Calendar.DAY_OF_MONTH)
+        val datePickerDialog = DatePickerDialog(
+            context,
+            { _, yearPick, monthPick, dayPick ->
+                val fakeDate = "$yearPick-${(monthPick + ONE) % MONTH_IN_YEAR}-$dayPick"
+                val parseDate =
+                    SimpleDateFormat(FORMAT_DATE_TO_GET, Locale.getDefault()).parse(fakeDate)
+                val date =
+                    SimpleDateFormat(FORMAT_DATE_TO_GET, Locale.getDefault()).format(parseDate)
+                getData(Time(date, date))
+            }, year, month, day
+        )
+        datePickerDialog.setTitle(context.getString(R.string.title_select_date))
+        datePickerDialog.show()
     }
 }
