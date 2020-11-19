@@ -3,15 +3,23 @@ package com.sun.premierleague.ui.match
 import android.view.View
 import com.sun.premierleague.R
 import com.sun.premierleague.base.BaseViewHolder
-import com.sun.premierleague.base.OnItemClick
 import com.sun.premierleague.data.model.MatchItem
 import com.sun.premierleague.utils.loadImage
 import kotlinx.android.synthetic.main.item_recyclerview_match.view.*
 
-class MatchViewHolder(private val itemView: View) :
-    OnItemClick<MatchItem>,
-    BaseViewHolder<MatchItem>(itemView) {
+class MatchViewHolder(
+    private val itemView: View,
+    onItemClick: (MatchItem) -> Unit
+) : BaseViewHolder<MatchItem>(itemView) {
     private var itemData: MatchItem? = null
+
+    init {
+        itemView.setOnClickListener {
+            itemData?.let {
+                onItemClick(it)
+            }
+        }
+    }
 
     override fun onBind(matchItem: MatchItem) {
         itemData = matchItem
@@ -31,15 +39,6 @@ class MatchViewHolder(private val itemView: View) :
             textAwayTeam.text = matchItem.matchAwayTeamName
             imageHomeTeam.loadImage(matchItem.teamHomeBadge)
             imageAwayTeam.loadImage(matchItem.teamAwayBadge)
-        }
-    }
-
-    override fun onClickItem(matchItem: MatchItem) {
-        itemData = matchItem
-        itemView.setOnClickListener {
-            itemData?.let {
-                onClickItem(it)
-            }
         }
     }
 

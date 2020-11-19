@@ -44,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textTitleLineUp" />
 
         <TextView
-            android:id="@+id/textNameSeason"
+            android:id="@+id/textNameStadium"
             style="@style/TextLineUp"
             android:layout_marginEnd="@dimen/dp_5"
             android:drawablePadding="@dimen/dp_5"
@@ -56,6 +56,7 @@
         <TextView
             android:id="@+id/textHomeGoalie"
             style="@style/TextLineUp"
+            android:layout_marginTop="@dimen/dp_8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textNameReferee" />
@@ -71,7 +72,7 @@
         <TextView
             android:id="@+id/textHomeRowTwo"
             style="@style/TextLineUp"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_28"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textHomeRowOne" />
@@ -79,7 +80,7 @@
         <TextView
             android:id="@+id/textHomeRowThree"
             style="@style/TextLineUp"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_28"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textHomeRowTwo" />
@@ -87,7 +88,7 @@
         <TextView
             android:id="@+id/textHomeRowFour"
             style="@style/TextLineUp"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_28"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textHomeRowThree" />
@@ -111,7 +112,7 @@
         <TextView
             android:id="@+id/textAwayRowTwo"
             style="@style/TextLineUp"
-            android:layout_marginBottom="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_28"
             app:layout_constraintBottom_toTopOf="@+id/textAwayRowOne"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -119,7 +120,7 @@
         <TextView
             android:id="@+id/textAwayRowThree"
             style="@style/TextLineUp"
-            android:layout_marginBottom="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_28"
             app:layout_constraintBottom_toTopOf="@+id/textAwayRowTwo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -127,7 +128,7 @@
         <TextView
             android:id="@+id/textAwayRowFour"
             style="@style/TextLineUp"
-            android:layout_marginBottom="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_28"
             app:layout_constraintBottom_toTopOf="@+id/textAwayRowThree"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -183,26 +184,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerReserve" />
 
-        <TextView
-            android:id="@+id/textNameCoach"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCoach"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="@dimen/dp_8"
-            app:layout_constraintEnd_toStartOf="@+id/viewVertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitleCoach" />
-
-        <TextView
-            android:id="@+id/textNameAssistantCoach"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="@dimen/dp_8"
-            app:layout_constraintBottom_toBottomOf="@+id/textNameCoach"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/viewVertical"
-            app:layout_constraintTop_toTopOf="@+id/textNameCoach" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitleCoach"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_recyclerview_line_up" />
 
         <TextView
             android:id="@+id/textTitlePlayerAbsent"
@@ -216,10 +209,10 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textNameCoach" />
+            app:layout_constraintTop_toBottomOf="@+id/recyclerCoach" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerAbsent"
+            android:id="@+id/recyclerMissing"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:overScrollMode="never"
