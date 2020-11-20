@@ -26,5 +26,6 @@
     <string name="title_goal_difference">GD</string>
     <string name="title_point">Pts</string>
     <string name="goal_difference">%s/%s</string>
+    <string name="title_statistic">Statistic</string>
     <string name="title_select_date">Select Date</string>
 </resources>
