@@ -6,7 +6,7 @@ import android.view.MenuItem
 import com.sun.premierleague.R
 import com.sun.premierleague.base.BaseFragment
 import com.sun.premierleague.data.model.MatchItem
-import com.sun.premierleague.utils.RepositoryUtil
+import com.sun.premierleague.utils.RepositoryFactory
 import com.sun.premierleague.utils.TimeUtils
 import com.sun.premierleague.utils.showToast
 import kotlinx.android.synthetic.main.fragment_match.*
@@ -25,7 +25,6 @@ class MatchFragment : BaseFragment(), MatchContract.View {
     }
 
     override fun initData() {
-        setHasOptionsMenu(true)
         initAdapter()
         initPresenter()
         presenter?.start()
@@ -37,7 +36,7 @@ class MatchFragment : BaseFragment(), MatchContract.View {
 
     private fun initPresenter() {
         val context = context ?: return
-        val repository = RepositoryUtil.getRepository(context)
+        val repository = RepositoryFactory.getRepository(context)
         presenter = MatchPresenter(this, repository)
     }
 

@@ -1,8 +1,11 @@
 package com.sun.premierleague.data.model
 
+import android.os.Parcelable
 import com.sun.premierleague.utils.map
+import kotlinx.android.parcel.Parcelize
 import org.json.JSONObject
 
+@Parcelize
 data class MatchItem(
     val matchId: String,
     val matchDate: String,
@@ -27,7 +30,7 @@ data class MatchItem(
     val substitutions: Substitutions,
     val lineup: Lineup,
     val statistics: List<Statistic>,
-) {
+) : Parcelable {
     constructor(jsonObject: JSONObject) : this(
         jsonObject.getString(MATCH_ID),
         jsonObject.getString(MATCH_DATE),

@@ -7,7 +7,7 @@ import com.sun.premierleague.data.source.local.dao.NotificationMatchDAOImpl
 import com.sun.premierleague.data.source.local.database.AppDatabase
 import com.sun.premierleague.data.source.remote.RemoteDataSource
 
-object RepositoryUtil {
+object RepositoryFactory {
     fun getRepository(context: Context): FootballRepository {
         val appDatabase = AppDatabase.getInstance(context)
         val notificationMatchDAOImpl = NotificationMatchDAOImpl.getInstance(appDatabase)

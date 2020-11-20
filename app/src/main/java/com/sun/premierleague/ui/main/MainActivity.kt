@@ -6,6 +6,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sun.premierleague.R
 import com.sun.premierleague.base.BaseActivity
 import com.sun.premierleague.ui.match.MatchFragment
+import com.sun.premierleague.ui.stats.StatsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -21,6 +22,7 @@ class MainActivity : BaseActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menuMatch -> openFragment(MatchFragment())
+                R.id.menuStat -> openFragment(StatsFragment())
             }
             true
         }
