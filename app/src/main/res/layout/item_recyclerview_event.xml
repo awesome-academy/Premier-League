@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_16">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideLineVertical"
@@ -11,147 +12,151 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
-    <View
-        android:id="@+id/viewHome"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/textHomeYellowCard"
-        app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
-        app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
-        app:layout_constraintTop_toTopOf="@+id/textHomeGoal" />
-
     <TextView
         android:id="@+id/textTimeLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/background_time_line"
-        android:padding="@dimen/dp_10"
+        android:padding="@dimen/dp_8"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/viewHome"
+        android:textSize="@dimen/sp_10"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewHome" />
+        app:layout_constraintTop_toTopOf="@+id/constraintHome" />
 
-    <TextView
-        android:id="@+id/textHomeGoal"
-        style="@style/TextItemEvent"
-        android:layout_marginTop="@dimen/dp_16"
-        android:text="@string/label_goal"
-        app:drawableEndCompat="@drawable/ic_football_goal"
-        app:layout_constraintEnd_toEndOf="@+id/guideLineVertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/viewHomeHorizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/viewHomeHorizontal">
 
-    <TextView
-        android:id="@+id/textHomeIn"
-        style="@style/TextItemEvent"
-        android:text="@string/label_goal"
-        app:drawableEndCompat="@drawable/ic_player_in"
-        app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
-        app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textHomeGoal" />
+        <TextView
+            android:id="@+id/textHomeGoal"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableEndCompat="@drawable/ic_football_goal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textHomeOut"
-        style="@style/TextItemEvent"
-        android:text="@string/label_goal"
-        app:drawableEndCompat="@drawable/ic_player_out"
-        app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
-        app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textHomeIn" />
+        <TextView
+            android:id="@+id/textHomeIn"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableEndCompat="@drawable/ic_player_in"
+            app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
+            app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
+            app:layout_constraintTop_toBottomOf="@+id/textHomeGoal" />
 
-    <TextView
-        android:id="@+id/textHomeRedCard"
-        style="@style/TextItemEvent"
-        android:text="@string/label_goal"
-        app:drawableEndCompat="@drawable/ic_red_card"
-        app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
-        app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textHomeOut" />
+        <TextView
+            android:id="@+id/textHomeOut"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableEndCompat="@drawable/ic_player_out"
+            app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
+            app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
+            app:layout_constraintTop_toBottomOf="@+id/textHomeIn" />
 
-    <TextView
-        android:id="@+id/textHomeYellowCard"
-        style="@style/TextItemEvent"
-        android:text="@string/label_goal"
-        app:drawableEndCompat="@drawable/ic_yellow_card"
-        app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
-        app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textHomeRedCard" />
+        <TextView
+            android:id="@+id/textHomeRedCard"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableEndCompat="@drawable/ic_red_card"
+            app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
+            app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
+            app:layout_constraintTop_toBottomOf="@+id/textHomeOut" />
+
+        <TextView
+            android:id="@+id/textHomeYellowCard"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableEndCompat="@drawable/ic_yellow_card"
+            app:layout_constraintEnd_toEndOf="@+id/textHomeGoal"
+            app:layout_constraintStart_toStartOf="@+id/textHomeGoal"
+            app:layout_constraintTop_toBottomOf="@+id/textHomeRedCard" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/viewHomeHorizontal"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_2"
         android:background="@color/color_blue_robin_egg"
-        app:layout_constraintBottom_toBottomOf="@+id/viewHome"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/textTimeLine"
         app:layout_constraintEnd_toStartOf="@+id/textTimeLine"
-        app:layout_constraintStart_toEndOf="@+id/viewHome"
-        app:layout_constraintTop_toTopOf="@+id/viewHome" />
+        app:layout_constraintStart_toEndOf="@+id/constraintHome"
+        app:layout_constraintTop_toTopOf="@+id/textTimeLine" />
 
-    <View
-        android:id="@+id/viewAway"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_20"
         android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/textAwayYellowCard"
-        app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
-        app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
-        app:layout_constraintTop_toTopOf="@+id/textAwayGoal" />
-
-    <TextView
-        android:id="@+id/textAwayGoal"
-        style="@style/TextItemEvent"
-        android:layout_marginTop="@dimen/dp_16"
-        android:text="@string/label_goal"
-        app:drawableStartCompat="@drawable/ic_football_goal"
+        app:layout_constraintBottom_toBottomOf="@+id/viewAwayHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideLineVertical"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/viewAwayHorizontal">
 
-    <TextView
-        android:id="@+id/textAwayIn"
-        style="@style/TextItemEvent"
-        android:text="@string/label_goal"
-        app:drawableStartCompat="@drawable/ic_player_in"
-        app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
-        app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textAwayGoal" />
+        <TextView
+            android:id="@+id/textAwayGoal"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableStartCompat="@drawable/ic_football_goal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textAwayOut"
-        style="@style/TextItemEvent"
-        android:text="@string/label_goal"
-        app:drawableStartCompat="@drawable/ic_player_out"
-        app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
-        app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textAwayIn" />
+        <TextView
+            android:id="@+id/textAwayIn"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableStartCompat="@drawable/ic_player_in"
+            app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
+            app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
+            app:layout_constraintTop_toBottomOf="@+id/textAwayGoal" />
 
-    <TextView
-        android:id="@+id/textAwayRedCard"
-        style="@style/TextItemEvent"
-        android:text="@string/label_goal"
-        app:drawableStartCompat="@drawable/ic_red_card"
-        app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
-        app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textAwayOut" />
+        <TextView
+            android:id="@+id/textAwayOut"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableStartCompat="@drawable/ic_player_out"
+            app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
+            app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
+            app:layout_constraintTop_toBottomOf="@+id/textAwayIn" />
 
-    <TextView
-        android:id="@+id/textAwayYellowCard"
-        style="@style/TextItemEvent"
-        android:text="@string/label_goal"
-        app:drawableStartCompat="@drawable/ic_yellow_card"
-        app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
-        app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
-        app:layout_constraintTop_toBottomOf="@+id/textAwayRedCard" />
+        <TextView
+            android:id="@+id/textAwayRedCard"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableStartCompat="@drawable/ic_red_card"
+            app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
+            app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
+            app:layout_constraintTop_toBottomOf="@+id/textAwayOut" />
+
+        <TextView
+            android:id="@+id/textAwayYellowCard"
+            style="@style/TextItemEvent"
+            android:text="@string/label_goal"
+            app:drawableStartCompat="@drawable/ic_yellow_card"
+            app:layout_constraintEnd_toEndOf="@+id/textAwayGoal"
+            app:layout_constraintStart_toStartOf="@+id/textAwayGoal"
+            app:layout_constraintTop_toBottomOf="@+id/textAwayRedCard" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/viewAwayHorizontal"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_2"
         android:background="@color/color_blue_robin_egg"
-        app:layout_constraintBottom_toBottomOf="@+id/viewAway"
-        app:layout_constraintEnd_toStartOf="@+id/viewAway"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/textTimeLine"
+        app:layout_constraintEnd_toStartOf="@+id/constraintAway"
         app:layout_constraintStart_toEndOf="@+id/textTimeLine"
-        app:layout_constraintTop_toTopOf="@+id/viewAway" />
+        app:layout_constraintTop_toTopOf="@+id/textTimeLine" />
 </androidx.constraintlayout.widget.ConstraintLayout>
