@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.detail.DetailMatchActivity"
+            android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/DetailMatchTheme" />
         <activity
             android:name=".ui.splash.SplashActivity"

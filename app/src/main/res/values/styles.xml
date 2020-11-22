@@ -33,14 +33,15 @@
     </style>
 
     <style name="TextItemEvent">
+        <item name="android:visibility">gone</item>
         <item name="android:paddingTop">@dimen/dp_8</item>
         <item name="android:paddingBottom">@dimen/dp_8</item>
-        <item name="android:paddingStart">@dimen/dp_16</item>
-        <item name="android:paddingEnd">@dimen/dp_16</item>
-        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:paddingStart">@dimen/dp_10</item>
+        <item name="android:paddingEnd">@dimen/dp_10</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:layout_marginTop">@dimen/dp_5</item>
         <item name="android:drawablePadding">@dimen/dp_10</item>
-        <item name="android:textSize">@dimen/sp_16</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -59,4 +60,3 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 </resources>
-

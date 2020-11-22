@@ -4,7 +4,8 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Diagram(
-    val numberClothes: String,
-    val namePlayer: String
+data class Event(
+    var goalScorers: List<Goalscorer>,
+    var cards: List<Card>,
+    var substitutions: Substitutions
 ) : Parcelable

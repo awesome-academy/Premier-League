@@ -18,7 +18,7 @@ class StatsViewHolder(private val itemView: View) : BaseViewHolder<StatItem>(ite
             textTitleDraw.text = item.overallLeagueD
             textTitleLose.text = item.overallLeagueL
             textTitleGoalDiff.text = context.getString(
-                R.string.goal_difference,
+                R.string.text_goal_difference,
                 item.overallLeagueGf,
                 item.overallLeagueGa
             )

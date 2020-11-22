@@ -3,6 +3,8 @@ package com.sun.premierleague.utils
 object MatchConst {
     const val TIME = "time"
     const val INFO = "info"
+    const val FINISHED = "Finished"
+    const val EXTRA_MATCH_ITEM = "EXTRA_MATCH_ITEM"
 }
 
 object LineupConst {
@@ -16,4 +18,5 @@ object LineupConst {
     const val LINEUP_NUMBER = "lineup_number"
     const val LINEUP_POSITION = "lineup_position"
     const val PLAYER_KEY = "player_key"
+    const val YELLOW_CARD = "yellow card"
 }
