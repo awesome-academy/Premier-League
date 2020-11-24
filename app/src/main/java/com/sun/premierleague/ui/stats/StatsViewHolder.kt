@@ -7,8 +7,23 @@ import com.sun.premierleague.data.model.StatItem
 import com.sun.premierleague.utils.loadImage
 import kotlinx.android.synthetic.main.item_recyclerview_stats.view.*
 
-class StatsViewHolder(private val itemView: View) : BaseViewHolder<StatItem>(itemView) {
+class StatsViewHolder(
+    private val itemView: View,
+    onItemClick: (StatItem) -> Unit
+) : BaseViewHolder<StatItem>(itemView) {
+
+    private var itemData: StatItem? = null
+
+    init {
+        itemView.setOnClickListener {
+            itemData?.let {
+                onItemClick(it)
+            }
+        }
+    }
+
     override fun onBind(item: StatItem) {
+        itemData = item
         itemView.run {
             textStt.text = item.overallLeaguePosition
             imageTeam.loadImage(item.teamBadge)
